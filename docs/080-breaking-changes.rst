@@ -47,7 +47,7 @@ New Restrictions
      represent a value in the enum.
 
 * There are new restrictions on explicit conversions between two different types. The conversion is
-  only allowed when there is at most one change in sign, width or 'kind' / different type (``int``,
+  only allowed when there is at most one change in sign, width or type-category (``int``,
   ``address``, ``bytesNN``, etc.) For example, the conversion ``uint16(int8)`` is disallowed since
   the conversion changes width (8 bits to 16 bits) and sign (signed integer to unsigned integer.) To
   get the previous behaviour, use an intermediate conversion. In the previous example, this would be
@@ -55,11 +55,11 @@ New Restrictions
   that are disallowed by this rule. Note that, given types ``T`` and ``S``, the notation ``T(S)``
   refers to the explicit conversion ``T(x)``, where ``x`` is any arbitrary variable of type ``S``.
 
-  - ``address(uint)`` and ``uint(address)``: converting both 'kind' and width. Replace this by
+  - ``address(uint)`` and ``uint(address)``: converting both type-category and width. Replace this by
     ``address(uint160(uint))`` and ``uint(uint160(address))`` respectively.
-  - ``int80(bytes10)`` and ``bytes10(int80)``: converting both 'kind' and sign. Replace this by
+  - ``int80(bytes10)`` and ``bytes10(int80)``: converting both type-category and sign. Replace this by
     ``int80(uint80(bytes10))`` and ``bytes10(uint80(int80)`` respectively.
-  - ``Contract(uint)``: converting 'kind' and width. Replace this by
+  - ``Contract(uint)``: converting both type-category and width. Replace this by
     ``Contract(address(uint160(uint)))``.
 
   These conversions were disallowed since there was ambiguity in such conversions. For example, in
