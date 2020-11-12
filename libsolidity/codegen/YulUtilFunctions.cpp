@@ -3540,7 +3540,7 @@ string YulUtilFunctions::readFromMemoryOrCalldata(Type const& _type, bool _fromC
 
 	// TODO use ABI functions for handling calldata
 	if (_fromCalldata)
-		solAssert(!_type.isDynamicallyEncoded(), "");
+		solUnimplementedAssert(!_type.isDynamicallyEncoded(), "");
 
 	return m_functionCollector.createFunction(functionName, [&] {
 		if (auto refType = dynamic_cast<ReferenceType const*>(&_type))

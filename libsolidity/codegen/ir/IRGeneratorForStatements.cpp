@@ -620,6 +620,8 @@ void IRGeneratorForStatements::endVisit(UnaryOperation const& _unaryOperation)
 		else if (op == Token::Sub)
 		{
 			IntegerType const& intType = *dynamic_cast<IntegerType const*>(&resultType);
+			if (!intType.isSigned())
+				solUnimplementedAssert(false, "Unary - on unsigned type.");
 			define(_unaryOperation) <<
 				m_utils.negateNumberCheckedFunction(intType) <<
 				"(" <<
