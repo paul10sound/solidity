@@ -29,6 +29,7 @@ Bugfixes:
  * SMTChecker: Fix internal error when ``array.push()`` is used as the LHS of an assignment.
  * SMTChecker: Fix CHC false positives when branches are used inside modifiers.
  * Code generator: Fix missing creation dependency tracking for abstract contracts.
+ * Standard JSON: Fix library addresses specified in ``libraries`` being used for linking even if the file names do not match.
 
 
 ### 0.7.4 (2020-10-19)
