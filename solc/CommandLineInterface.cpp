@@ -1776,6 +1776,12 @@ bool CommandLineInterface::link()
 				return false;
 			}
 
+			if (*(it + 1) != '_' || *(it + placeholderSize - 2) != '_' || *(it + placeholderSize - 1) != '_')
+			{
+				++it;
+				continue;
+			}
+
 			string foundPlaceholder(it, it + placeholderSize);
 			if (librariesReplacements.count(foundPlaceholder))
 			{
